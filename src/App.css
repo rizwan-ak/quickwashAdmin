@@ -1,0 +1,134 @@
+.bgGradient {
+  background: #34c47c; /* fallback for old browsers */
+  background: #34c47c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom right,
+    #34c47c,
+    #f5f7f9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom right,
+    #34c47c,
+    #f5f7f9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  height: 100vh;
+}
+a {
+  text-decoration: none !important;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.nav-item .nav-link:hover {
+  color: #185a9d !important;
+}
+.nav-item .nav-link {
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+}
+.nav-link-collapse:after {
+  float: right;
+  content: "\f067";
+  font-family: "FontAwesome";
+}
+
+.nav-link-show:after {
+  float: right;
+  content: "\f068";
+  font-family: "FontAwesome";
+}
+
+.nav-item ul.nav-second-level {
+  padding-left: 0;
+}
+
+.nav-item ul.nav-second-level > .nav-item {
+  padding-left: 20px;
+}
+
+@media (min-width: 992px) {
+  .sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.07);
+  }
+  .navbar-expand-lg .sidenav {
+    flex-direction: column;
+  }
+  .content-wrapper {
+    margin-left: 300px;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 991px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.07);
+  }
+  .nav-logo {
+    display: none;
+  }
+}
+.dropdown-menu.show {
+  left: -200%;
+  top: -25px;
+}
+.pointer {
+  cursor: pointer !important;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  width: 5px;
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 1em;
+  background-color: #ddd;
+  outline: 1px solid slategrey;
+  border-radius: 1rem;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+.messages-box,
+.chat-box {
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+  color: #999;
+}
+.myColor {
+  background-color: #a6c2ab;
+}
+
+.primaryBg {
+  background-color: #a6c2ab !important;
+  color: white !important;
+}
+.secondaryBg {
+  background-color: #34c47c !important;
+  color: white !important;
+}
