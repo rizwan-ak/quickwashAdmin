@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/quickwashAdmin/static/css/main.030fe4ed.chunk.css",
+    "main.js": "/quickwashAdmin/static/js/main.b4d82139.chunk.js",
+    "main.js.map": "/quickwashAdmin/static/js/main.b4d82139.chunk.js.map",
+    "runtime-main.js": "/quickwashAdmin/static/js/runtime-main.37e1f211.js",
+    "runtime-main.js.map": "/quickwashAdmin/static/js/runtime-main.37e1f211.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/quickwashAdmin/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.bc0e067a.chunk.js": "/quickwashAdmin/static/js/2.bc0e067a.chunk.js",
+    "static/js/2.bc0e067a.chunk.js.map": "/quickwashAdmin/static/js/2.bc0e067a.chunk.js.map",
+    "index.html": "/quickwashAdmin/index.html",
+    "precache-manifest.36eeec9bd9ef3f11446196e63c84f615.js": "/quickwashAdmin/precache-manifest.36eeec9bd9ef3f11446196e63c84f615.js",
+    "service-worker.js": "/quickwashAdmin/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/quickwashAdmin/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.030fe4ed.chunk.css.map": "/quickwashAdmin/static/css/main.030fe4ed.chunk.css.map",
+    "static/js/2.bc0e067a.chunk.js.LICENSE.txt": "/quickwashAdmin/static/js/2.bc0e067a.chunk.js.LICENSE.txt",
+    "static/media/dp.png": "/quickwashAdmin/static/media/dp.1ee966d6.png",
+    "static/media/greenLogo.png": "/quickwashAdmin/static/media/greenLogo.9f6e26d5.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.37e1f211.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.bc0e067a.chunk.js",
+    "static/css/main.030fe4ed.chunk.css",
+    "static/js/main.b4d82139.chunk.js"
+  ]
+}
