@@ -48,6 +48,17 @@ const logout = async () => {
   }
 };
 
+//IS LOGGED IN
+const isLoggedIn = async (set) => {
+  try {
+    await auth.onAuthStateChanged((user) => {
+      user && set(true);
+    });
+  } catch (err) {
+    alert(err);
+  }
+};
+
 //GET ORDERS
 const getOrders = async () => {
   try {
@@ -90,10 +101,6 @@ const getChats = async (set) => {
       const chats = await res.docs.map((doc) => doc.data());
       await set(chats);
     });
-
-    // const res = await firestore.collection("chats").get();
-    // const data = await res.docs.map((doc) => doc.data());
-    // set(data);
   } catch (err) {
     alert(err);
   }
@@ -126,14 +133,27 @@ const sendMsg = async (id, msg) => {
   }
 };
 
+const setLocation = async (data) => {
+  console.log(data);
+  try {
+    await firestore
+      .doc(`ridersLocation/1`)
+      .set({ lat: data.latitude, lon: data.longitude });
+  } catch (err) {
+    alert(err);
+  }
+};
+
 export default {
   signin,
   isAdmin,
   logout,
+  isLoggedIn,
   getOrders,
   changeOrderStatus,
   getUser,
   getUsers,
   getChats,
   sendMsg,
+  setLocation,
 };

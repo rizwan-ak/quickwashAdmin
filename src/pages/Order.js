@@ -15,7 +15,7 @@ export default class Order extends Component {
             <Card.Body>
               <h5 className="">
                 <span className="font-weight-bold">Category : </span>
-                Wash & Fold
+                {this.props.location?.order?.category}
               </h5>
               <h5 className="">
                 <span className="font-weight-bold">Arrival on : </span>

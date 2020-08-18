@@ -56,6 +56,7 @@ class Users extends Component {
                   <tbody>
                     {search.map((u) => (
                       <tr
+                        key={u.id}
                         className="pointer"
                         onClick={() =>
                           this.props.history.push({
@@ -68,7 +69,7 @@ class Users extends Component {
                           <img
                             width="50px"
                             className="rounded-circle"
-                            src={u.image || dp}
+                            src={u.image ? u.image : dp}
                             alt=""
                           />
                         </td>

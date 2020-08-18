@@ -30,6 +30,7 @@ class Orders extends Component {
                   <thead>
                     <tr>
                       <th>Ordered By</th>
+                      <th>Category</th>
                       <th>Delivery Date</th>
                       <th>Arrival Loacation</th>
                       <th>Delivery Location</th>
@@ -41,6 +42,7 @@ class Orders extends Component {
                     {this.props.orders.map((o) => (
                       <tr>
                         <td>{o.byName || "N/A"}</td>
+                        <td>{o.category || "N/A"}</td>
                         <td>{o.date || "N/A"}</td>
                         <td>{o.arrivalLoc || "N/A"}</td>
                         <td>{o.deliveryLoc || "N/A"}</td>
@@ -53,13 +55,13 @@ class Orders extends Component {
                               await FB.changeOrderStatus(e.target.value, o.id)
                             }
                           >
-                            <option>Delivered</option>
-                            <option>Delivering</option>
-                            <option>Folding</option>
-                            <option>Drying</option>
-                            <option>Washing</option>
-                            <option>Ordered Picked Up</option>
-                            <option>Picking Up</option>
+                            <option>delivered</option>
+                            <option>delivering</option>
+                            <option>folding</option>
+                            <option>drying</option>
+                            <option>washing</option>
+                            <option>picked up</option>
+                            <option>picking up</option>
                           </Form.Control>
                         </td>
                         <td>

@@ -8,15 +8,20 @@ class Login extends Component {
     email: "",
     password: "",
   };
+
   onChange = async (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
+
   onSubmit = async () => {
     const id = await FB.signin(this.state.email, this.state.password);
     const res = await FB.isAdmin(id);
-    res && this.props.history.push("/dashboard");
+    res
+      ? this.props.history.push("/dashboard")
+      : alert("only admins can sign in");
   };
+
   render() {
     return (
       <div className="bgGradient d-flex">

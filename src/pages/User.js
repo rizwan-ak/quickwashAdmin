@@ -76,6 +76,7 @@ class User extends Component {
                   <thead>
                     <tr>
                       <th>Ordered By</th>
+                      <th>Category</th>
                       <th>Delivery Date</th>
                       <th>Arrival Loacation</th>
                       <th>Delivery Location</th>
@@ -85,9 +86,10 @@ class User extends Component {
                   </thead>
                   {this.props.orders.map((o) => (
                     <tbody key={o.id}>
-                      {o.by == this.state.user?.id && (
+                      {o.by === this.state.user?.id && (
                         <tr>
                           <td>{o.byName || "N/A"}</td>
+                          <td>{o.category || "N/A"}</td>
                           <td>{o.date || "N/A"}</td>
                           <td>{o.arrivalLoc || "N/A"}</td>
                           <td>{o.deliveryLoc || "N/A"}</td>

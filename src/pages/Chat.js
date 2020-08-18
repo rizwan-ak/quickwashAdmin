@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 
 import AC from "../redux/actions/actionCreater";
 import FB from "../firebase";
-import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
 
 class Chat extends Component {
   state = {
@@ -117,7 +116,7 @@ class Chat extends Component {
                           <div
                             key={c.time}
                             className={
-                              c.sender == "admin"
+                              c.sender === "admin"
                                 ? "media w-75 mb-3"
                                 : "media w-75 ml-auto mb-3"
                             }
@@ -125,14 +124,14 @@ class Chat extends Component {
                             <div className="media-body ml-3">
                               <div
                                 className={
-                                  c.sender == "admin"
+                                  c.sender === "admin"
                                     ? "bg-light rounded py-2 px-3 mb-2"
                                     : "rounded py-2 px-3 mb-2 primaryBg"
                                 }
                               >
                                 <p
                                   className={
-                                    c.sender == "admin"
+                                    c.sender === "admin"
                                       ? "text-small mb-0 text-muted"
                                       : "text-small mb-0 text-white"
                                   }
