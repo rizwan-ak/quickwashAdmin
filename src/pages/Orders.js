@@ -39,43 +39,44 @@ class Orders extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.props.orders.map((o) => (
-                      <tr>
-                        <td>{o.byName || "N/A"}</td>
-                        <td>{o.category || "N/A"}</td>
-                        <td>{o.date || "N/A"}</td>
-                        <td>{o.arrivalLoc || "N/A"}</td>
-                        <td>{o.deliveryLoc || "N/A"}</td>
-                        <td>
-                          <Form.Control
-                            as="select"
-                            value={o?.status}
-                            size="sm"
-                            onChange={async (e) =>
-                              await FB.changeOrderStatus(e.target.value, o.id)
-                            }
-                          >
-                            <option>delivered</option>
-                            <option>delivering</option>
-                            <option>folding</option>
-                            <option>drying</option>
-                            <option>washing</option>
-                            <option>picked up</option>
-                            <option>picking up</option>
-                          </Form.Control>
-                        </td>
-                        <td>
-                          <Link
-                            to={{
-                              pathname: "/order",
-                              order: o,
-                            }}
-                          >
-                            More
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
+                    {this.props.orders &&
+                      this.props.orders.map((o) => (
+                        <tr>
+                          <td>{o.byName || "N/A"}</td>
+                          <td>{o.category || "N/A"}</td>
+                          <td>{o.date || "N/A"}</td>
+                          <td>{o.arrivalLoc || "N/A"}</td>
+                          <td>{o.deliveryLoc || "N/A"}</td>
+                          <td>
+                            <Form.Control
+                              as="select"
+                              value={o?.status}
+                              size="sm"
+                              onChange={async (e) =>
+                                await FB.changeOrderStatus(e.target.value, o.id)
+                              }
+                            >
+                              <option>delivered</option>
+                              <option>delivering</option>
+                              <option>folding</option>
+                              <option>drying</option>
+                              <option>washing</option>
+                              <option>picked up</option>
+                              <option>picking up</option>
+                            </Form.Control>
+                          </td>
+                          <td>
+                            <Link
+                              to={{
+                                pathname: "/order",
+                                order: o,
+                              }}
+                            >
+                              More
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </Table>
               </Card.Text>

@@ -4,7 +4,6 @@ import { Card, Container } from "react-bootstrap";
 
 export default class Order extends Component {
   render() {
-    console.log(this.props.location.order);
     return (
       <Header>
         <Container>

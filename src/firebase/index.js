@@ -2,13 +2,14 @@ import * as firebase from "firebase";
 
 // Initialize Firebase
 export const firebaseConfig = {
-  apiKey: "AIzaSyDylm_jWDX-Oy9bN5U4a4AcHsN3USnAF7I",
-  authDomain: "quickwash-c0d35.firebaseapp.com",
-  databaseURL: "https://quickwash-c0d35.firebaseio.com",
-  projectId: "quickwash-c0d35",
-  storageBucket: "quickwash-c0d35.appspot.com",
-  messagingSenderId: "730392161523",
-  appId: "1:730392161523:web:5323e68c8e664d32b3db86",
+  apiKey: "AIzaSyDvMcnkcwKAva_bk33AIC5H_7FRT7lhjvo",
+  authDomain: "quickwash-162c2.firebaseapp.com",
+  databaseURL: "https://quickwash-162c2.firebaseio.com",
+  projectId: "quickwash-162c2",
+  storageBucket: "quickwash-162c2.appspot.com",
+  messagingSenderId: "812769309218",
+  appId: "1:812769309218:web:ac414ebb9df981af1c907b",
+  measurementId: "G-K2ZVRT2SN4",
 };
 const app = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
@@ -43,6 +44,16 @@ const isAdmin = async (id) => {
 const logout = async () => {
   try {
     return await auth.signOut();
+  } catch (err) {
+    alert(err);
+  }
+};
+
+//FORGOT PASSWORD
+const forgotPassword = async (email) => {
+  try {
+    await auth.sendPasswordResetEmail(email);
+    alert("Password Reset link is send to your email.");
   } catch (err) {
     alert(err);
   }
@@ -133,12 +144,32 @@ const sendMsg = async (id, msg) => {
   }
 };
 
+// SET RIDERS CURRENT LOCATION
 const setLocation = async (data) => {
-  console.log(data);
   try {
     await firestore
       .doc(`ridersLocation/1`)
-      .set({ lat: data.latitude, lon: data.longitude });
+      .set({ lat: data.latitude, lon: data.longitude }, { merge: true });
+  } catch (err) {
+    alert(err);
+  }
+};
+
+// SET PRICES
+const setPrices = async (data) => {
+  try {
+    await firestore.doc(`prices/1`).set({ ...data }, { merge: true });
+  } catch (err) {
+    alert(err);
+  }
+};
+
+//GET PRICES
+const getPrices = async (set) => {
+  try {
+    firestore.collection("prices").onSnapshot(async (res) => {
+      await set(res.docs.map((doc) => doc.data())[0]);
+    });
   } catch (err) {
     alert(err);
   }
@@ -156,4 +187,7 @@ export default {
   getChats,
   sendMsg,
   setLocation,
+  forgotPassword,
+  setPrices,
+  getPrices,
 };

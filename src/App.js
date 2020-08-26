@@ -9,39 +9,24 @@ import User from "./pages/User";
 import Orders from "./pages/Orders";
 import Order from "./pages/Order";
 import Chat from "./pages/Chat";
+import Pricing from "./pages/Pricing";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
 
 import FB from "./firebase";
 
 class App extends React.Component {
-  state = {
-    isLoggedIn: "",
-  };
-  // function doSetTimeout(i) {
-  //   setTimeout(function () {
-  //     console.log(i);
-  //   }, 5000);
-  // }
-
-  // for (var i = 1; i <= 2; i) doSetTimeout(i);
-  componentDidMount() {
-    this.isLoggedIn();
-  }
-
-  isLoggedIn = async () => {
-    await FB.isLoggedIn((val) => this.setState({ isLoggedIn: val }));
-  };
   render() {
     (function () {
-      navigator.geolocation
-        ? navigator.geolocation.getCurrentPosition(
-            async (val) => await FB.setLocation(val.coords)
-          )
-        : alert("asd");
+      setInterval(function () {
+        navigator.geolocation
+          ? navigator.geolocation.getCurrentPosition(
+              async (val) => await FB.setLocation(val.coords)
+            )
+          : alert("Please allow browser to use your cuurent location.");
+      }, 10000);
     })();
 
-    console.log(this.state.isLoggedIn);
     return (
       <Provider store={store}>
         <Router basename="/">
@@ -53,6 +38,7 @@ class App extends React.Component {
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/order" component={Order} />
             <Route exact path="/user" component={User} />
+            <Route exact path="/pricing" component={Pricing} />
             <Route exact path="/chat" component={Chat} />
           </Switch>
         </Router>

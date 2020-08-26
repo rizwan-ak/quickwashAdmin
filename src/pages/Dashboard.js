@@ -19,6 +19,7 @@ class Dashboard extends Component {
     this.props.getUsers(users);
 
     await FB.getChats((chats) => this.props.getChats(chats));
+    await FB.getPrices((prices) => this.props.getPrices(prices));
   };
   render() {
     return (
@@ -61,4 +62,5 @@ export default connect((state) => state, {
   getOrders: AC.getOrders,
   getUsers: AC.getUsers,
   getChats: AC.getChats,
+  getPrices: AC.getPrices,
 })(Dashboard);

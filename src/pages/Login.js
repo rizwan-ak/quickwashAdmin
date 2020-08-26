@@ -21,6 +21,11 @@ class Login extends Component {
       ? this.props.history.push("/dashboard")
       : alert("only admins can sign in");
   };
+  forgotPassword = async () => {
+    this.state.email
+      ? await FB.forgotPassword(this.state.email)
+      : alert("Please enter a valid email.");
+  };
 
   render() {
     return (
@@ -76,6 +81,13 @@ class Login extends Component {
                     />
                   </div>
                 </div>
+                <p
+                  style={{ cursor: "pointer" }}
+                  className="text-right"
+                  onClick={this.forgotPassword}
+                >
+                  Forgot password?
+                </p>
                 <button
                   style={{ borderRadius: "50px" }}
                   type="button"

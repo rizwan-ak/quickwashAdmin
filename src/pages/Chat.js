@@ -62,33 +62,38 @@ class Chat extends Component {
                     <p className="h5 mb-0 py-1">Recent</p>
                   </div>
                   <div className="messages-box">
-                    {this.props.chats.map((c) => (
-                      <div key={c.orderId} className="list-group rounded-0">
-                        <div
-                          key={c.orderId}
-                          onClick={() => this.selectChat(c.orderId, c, c.with)}
-                          style={{ cursor: "pointer" }}
-                          className={
-                            c.orderId === this.state.selectedChat
-                              ? "list-group-item secondaryBg text-white"
-                              : "list-group-item list-group-item-action list-group-item-light"
-                          }
-                        >
-                          <div className="media">
-                            <div className="media-body ml-4">
-                              <div className="d-flex align-items-center justify-content-between mb-1">
-                                <h6 className="mb-0">Order ID: {c.orderId}</h6>
+                    {this.props.chats &&
+                      this.props.chats.map((c) => (
+                        <div key={c.orderId} className="list-group rounded-0">
+                          <div
+                            key={c.orderId}
+                            onClick={() =>
+                              this.selectChat(c.orderId, c, c.with)
+                            }
+                            style={{ cursor: "pointer" }}
+                            className={
+                              c.orderId === this.state.selectedChat
+                                ? "list-group-item secondaryBg text-white"
+                                : "list-group-item list-group-item-action list-group-item-light"
+                            }
+                          >
+                            <div className="media">
+                              <div className="media-body ml-4">
+                                <div className="d-flex align-items-center justify-content-between mb-1">
+                                  <h6 className="mb-0">
+                                    Order ID: {c.orderId}
+                                  </h6>
+                                </div>
+                                <p className="font-italic mb-0 text-small">
+                                  {c.messages[
+                                    c.messages.length - 1
+                                  ].msg?.substring(0, 100)}
+                                </p>
                               </div>
-                              <p className="font-italic mb-0 text-small">
-                                {c.messages[
-                                  c.messages.length - 1
-                                ].msg?.substring(0, 100)}
-                              </p>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
                   </div>
                 </div>
               </div>

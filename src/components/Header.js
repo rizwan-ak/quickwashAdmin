@@ -47,6 +47,11 @@ class Header extends Component {
                     </Link>
                   </li>
                   <li className="nav-item">
+                    <Link to="/pricing" className="nav-link h5">
+                      <span className="ml-2">Pricing</span>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
                     <Link to="/users" className="nav-link h5">
                       <span className="ml-2">Users</span>
                     </Link>

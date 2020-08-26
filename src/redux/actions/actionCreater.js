@@ -21,8 +21,16 @@ const getChats = (payload) => {
   };
 };
 
+const getPrices = (payload) => {
+  return {
+    type: AT.GET_PRICES,
+    payload,
+  };
+};
+
 export default {
   getOrders,
   getUsers,
   getChats,
+  getPrices,
 };
