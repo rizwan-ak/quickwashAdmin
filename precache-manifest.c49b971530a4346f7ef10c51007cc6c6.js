@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4cf6e7b4961feafdf12018738c3cc118",
+    "revision": "d5e70bcf64f9d0edec8c80bd3a66ec19",
     "url": "/quickwashAdmin/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/quickwashAdmin/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "d1a01a62002b70f32ecb",
-    "url": "/quickwashAdmin/static/css/main.4ac486a4.chunk.css"
+    "revision": "50a0421bafef155f8c9b",
+    "url": "/quickwashAdmin/static/css/main.4a19222d.chunk.css"
   },
   {
     "revision": "8f0c9376eafedf7e21a3",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/quickwashAdmin/static/js/2.5bf9d19e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d1a01a62002b70f32ecb",
-    "url": "/quickwashAdmin/static/js/main.955eb909.chunk.js"
+    "revision": "50a0421bafef155f8c9b",
+    "url": "/quickwashAdmin/static/js/main.35966f27.chunk.js"
   },
   {
     "revision": "e6553d95c6ffaa34794b",
