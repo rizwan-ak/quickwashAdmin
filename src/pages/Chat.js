@@ -48,6 +48,7 @@ class Chat extends Component {
   };
 
   render() {
+    console.log(this.state.user);
     return (
       <Header>
         <Container>

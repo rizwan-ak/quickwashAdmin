@@ -12,11 +12,9 @@ class Orders extends Component {
     this.orders();
   }
   orders = async () => {
-    const data = await FB.getOrders();
-    this.props.getOrders(data);
+    await FB.getOrders((data) => this.props.getOrders(data));
   };
   render() {
-    console.log(this.props.orders);
     return (
       <Header>
         <Container>

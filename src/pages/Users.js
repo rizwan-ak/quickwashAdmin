@@ -19,12 +19,17 @@ class Users extends Component {
     this.props.getUsers(users);
   };
   render() {
-    let search = this.props.users.filter(
-      (t) =>
-        t.firstName.toLowerCase().includes(this.state.search.toLowerCase()) ||
-        t.lastName.toLowerCase().includes(this.state.search.toLowerCase()) ||
-        t.email.toLowerCase().includes(this.state.search.toLowerCase())
-    );
+    let search = false;
+    if (this.props.users) {
+      search = this.props.users.filter(
+        (t) =>
+          t.firstName
+            ?.toLowerCase()
+            .includes(this.state.search.toLowerCase()) ||
+          t.lastName?.toLowerCase().includes(this.state.search.toLowerCase()) ||
+          t.email?.toLowerCase().includes(this.state.search.toLowerCase())
+      );
+    }
 
     return (
       <Header>
@@ -54,31 +59,32 @@ class Users extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {search.map((u) => (
-                      <tr
-                        key={u.id}
-                        className="pointer"
-                        onClick={() =>
-                          this.props.history.push({
-                            pathname: "/user",
-                            user: u,
-                          })
-                        }
-                      >
-                        <td>
-                          <img
-                            width="50px"
-                            className="rounded-circle"
-                            src={u.image ? u.image : dp}
-                            alt=""
-                          />
-                        </td>
-                        <td>{`${u.firstName} ${u.lastName}`}</td>
-                        <td>{u.email}</td>
-                        <td>{u.phoneNo || "N/A"}</td>
-                        <td>{u.address || "N/A"}</td>
-                      </tr>
-                    ))}
+                    {search &&
+                      search.map((u) => (
+                        <tr
+                          key={u.id}
+                          className="pointer"
+                          onClick={() =>
+                            this.props.history.push({
+                              pathname: "/user",
+                              user: u,
+                            })
+                          }
+                        >
+                          <td>
+                            <img
+                              width="50px"
+                              className="rounded-circle"
+                              src={u.image ? u.image : dp}
+                              alt=""
+                            />
+                          </td>
+                          <td>{`${u.firstName} ${u.lastName}`}</td>
+                          <td>{u.email}</td>
+                          <td>{u.phoneNo || "N/A"}</td>
+                          <td>{u.address || "N/A"}</td>
+                        </tr>
+                      ))}
                   </tbody>
                 </Table>
               </Card.Text>

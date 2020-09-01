@@ -12,8 +12,7 @@ class Dashboard extends Component {
     this.orders();
   }
   orders = async () => {
-    const data = await FB.getOrders();
-    this.props.getOrders(data);
+    await FB.getOrders((data) => this.props.getOrders(data));
 
     const users = await FB.getUsers();
     this.props.getUsers(users);

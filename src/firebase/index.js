@@ -71,10 +71,11 @@ const isLoggedIn = async (set) => {
 };
 
 //GET ORDERS
-const getOrders = async () => {
+const getOrders = async (set) => {
   try {
-    const data = await firestore.collection("orders").get();
-    return await data.docs.map((doc) => doc.data());
+    firestore.collection("orders").onSnapshot(async (res) => {
+      await set(res.docs.map((doc) => doc.data()));
+    });
   } catch (err) {
     alert(err);
   }

@@ -20,8 +20,7 @@ class User extends Component {
   }
 
   orders = async () => {
-    const data = await FB.getOrders();
-    this.props.getOrders(data);
+    await FB.getOrders((data) => this.props.getOrders(data));
   };
 
   render() {
@@ -84,47 +83,51 @@ class User extends Component {
                       <th>Details</th>
                     </tr>
                   </thead>
-                  {this.props.orders.map((o) => (
-                    <tbody key={o.id}>
-                      {o.by === this.state.user?.id && (
-                        <tr>
-                          <td>{o.byName || "N/A"}</td>
-                          <td>{o.category || "N/A"}</td>
-                          <td>{o.date || "N/A"}</td>
-                          <td>{o.arrivalLoc || "N/A"}</td>
-                          <td>{o.deliveryLoc || "N/A"}</td>
-                          <td>
-                            <Form.Control
-                              as="select"
-                              value={o?.status}
-                              size="sm"
-                              onChange={async (e) =>
-                                await FB.changeOrderStatus(e.target.value, o.id)
-                              }
-                            >
-                              <option>Delivered</option>
-                              <option>Delivering</option>
-                              <option>Folding</option>
-                              <option>Drying</option>
-                              <option>Washing</option>
-                              <option>Ordered Picked Up</option>
-                              <option>Picking Up</option>
-                            </Form.Control>
-                          </td>
-                          <td>
-                            <Link
-                              to={{
-                                pathname: "/order",
-                                order: o,
-                              }}
-                            >
-                              More
-                            </Link>
-                          </td>
-                        </tr>
-                      )}
-                    </tbody>
-                  ))}
+                  {this.props.orders &&
+                    this.props.orders.map((o) => (
+                      <tbody key={o.id}>
+                        {o.by === this.state.user?.id && (
+                          <tr>
+                            <td>{o.byName || "N/A"}</td>
+                            <td>{o.category || "N/A"}</td>
+                            <td>{o.date || "N/A"}</td>
+                            <td>{o.arrivalLoc || "N/A"}</td>
+                            <td>{o.deliveryLoc || "N/A"}</td>
+                            <td>
+                              <Form.Control
+                                as="select"
+                                value={o?.status}
+                                size="sm"
+                                onChange={async (e) =>
+                                  await FB.changeOrderStatus(
+                                    e.target.value,
+                                    o.id
+                                  )
+                                }
+                              >
+                                <option>Delivered</option>
+                                <option>Delivering</option>
+                                <option>Folding</option>
+                                <option>Drying</option>
+                                <option>Washing</option>
+                                <option>Ordered Picked Up</option>
+                                <option>Picking Up</option>
+                              </Form.Control>
+                            </td>
+                            <td>
+                              <Link
+                                to={{
+                                  pathname: "/order",
+                                  order: o,
+                                }}
+                              >
+                                More
+                              </Link>
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    ))}
                 </Table>
               </Card.Text>
             </Card.Body>

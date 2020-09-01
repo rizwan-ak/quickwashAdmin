@@ -139,3 +139,8 @@ button:focus {
   outline: none !important;
   box-shadow: none !important;
 }
+
+td,
+th {
+  width: 200px !important;
+}

@@ -14,7 +14,8 @@ export default class Order extends Component {
             <Card.Body>
               <h5 className="">
                 <span className="font-weight-bold">Category : </span>
-                {this.props.location?.order?.category}
+                {this.props.location?.order?.category} (
+                {this.props.location?.order?.categoryPrice})
               </h5>
               <h5 className="">
                 <span className="font-weight-bold">Arrival on : </span>
@@ -60,7 +61,8 @@ export default class Order extends Component {
                 <span className="font-weight-bold">Total Bill : </span>
                 {parseFloat(this.props.location?.order?.weightPrice) +
                   parseFloat(this.props.location?.order?.deliveryDatePrice) +
-                  parseFloat(this.props.location?.order?.detergentPrice)}{" "}
+                  parseFloat(this.props.location?.order?.detergentPrice) +
+                  parseFloat(this.props.location?.order?.categoryPrice)}{" "}
                 $
               </h3>
             </Card.Body>
