@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/quickwashAdmin/static/css/main.4a19222d.chunk.css",
-    "main.js": "/quickwashAdmin/static/js/main.35966f27.chunk.js",
-    "main.js.map": "/quickwashAdmin/static/js/main.35966f27.chunk.js.map",
+    "main.css": "/quickwashAdmin/static/css/main.01c63495.chunk.css",
+    "main.js": "/quickwashAdmin/static/js/main.e9549df3.chunk.js",
+    "main.js.map": "/quickwashAdmin/static/js/main.e9549df3.chunk.js.map",
     "runtime-main.js": "/quickwashAdmin/static/js/runtime-main.37e1f211.js",
     "runtime-main.js.map": "/quickwashAdmin/static/js/runtime-main.37e1f211.js.map",
     "static/css/2.af3c1da9.chunk.css": "/quickwashAdmin/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.5bf9d19e.chunk.js": "/quickwashAdmin/static/js/2.5bf9d19e.chunk.js",
-    "static/js/2.5bf9d19e.chunk.js.map": "/quickwashAdmin/static/js/2.5bf9d19e.chunk.js.map",
+    "static/js/2.c38ced0c.chunk.js": "/quickwashAdmin/static/js/2.c38ced0c.chunk.js",
+    "static/js/2.c38ced0c.chunk.js.map": "/quickwashAdmin/static/js/2.c38ced0c.chunk.js.map",
     "index.html": "/quickwashAdmin/index.html",
-    "precache-manifest.c49b971530a4346f7ef10c51007cc6c6.js": "/quickwashAdmin/precache-manifest.c49b971530a4346f7ef10c51007cc6c6.js",
+    "precache-manifest.102483af869260e4d0528b60d7cbb066.js": "/quickwashAdmin/precache-manifest.102483af869260e4d0528b60d7cbb066.js",
     "service-worker.js": "/quickwashAdmin/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/quickwashAdmin/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.4a19222d.chunk.css.map": "/quickwashAdmin/static/css/main.4a19222d.chunk.css.map",
-    "static/js/2.5bf9d19e.chunk.js.LICENSE.txt": "/quickwashAdmin/static/js/2.5bf9d19e.chunk.js.LICENSE.txt",
+    "static/css/main.01c63495.chunk.css.map": "/quickwashAdmin/static/css/main.01c63495.chunk.css.map",
+    "static/js/2.c38ced0c.chunk.js.LICENSE.txt": "/quickwashAdmin/static/js/2.c38ced0c.chunk.js.LICENSE.txt",
     "static/media/dp.png": "/quickwashAdmin/static/media/dp.1ee966d6.png",
     "static/media/greenLogo.png": "/quickwashAdmin/static/media/greenLogo.9f6e26d5.png"
   },
   "entrypoints": [
     "static/js/runtime-main.37e1f211.js",
     "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.5bf9d19e.chunk.js",
-    "static/css/main.4a19222d.chunk.css",
-    "static/js/main.35966f27.chunk.js"
+    "static/js/2.c38ced0c.chunk.js",
+    "static/css/main.01c63495.chunk.css",
+    "static/js/main.e9549df3.chunk.js"
   ]
 }
