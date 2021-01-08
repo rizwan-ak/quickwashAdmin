@@ -15,9 +15,15 @@ class Users extends Component {
     this.orders();
   }
   orders = async () => {
-    const users = await FB.getUsers();
-    this.props.getUsers(users);
+    await FB.getUsers((users) => this.props.getUsers(users));
   };
+
+  deltetUser = async (id, email) => {
+    if (window.confirm(`Do you really want to delete ${email}?`)) {
+      await FB.deleteUser(id);
+    }
+  };
+
   render() {
     let search = false;
     if (this.props.users) {
@@ -56,25 +62,23 @@ class Users extends Component {
                       <th>Email</th>
                       <th>phone Number</th>
                       <th>Address</th>
+                      <th>Delete</th>
                     </tr>
                   </thead>
                   <tbody>
                     {search &&
                       search.map((u) => (
-                        <tr
-                          key={u.id}
-                          className="pointer"
-                          onClick={() =>
-                            this.props.history.push({
-                              pathname: "/user",
-                              user: u,
-                            })
-                          }
-                        >
+                        <tr key={u.id}>
                           <td>
                             <img
+                              onClick={() =>
+                                this.props.history.push({
+                                  pathname: "/user",
+                                  user: u,
+                                })
+                              }
                               width="50px"
-                              className="rounded-circle"
+                              className="rounded-circle pointer"
                               src={u.image ? u.image : dp}
                               alt=""
                             />
@@ -83,6 +87,14 @@ class Users extends Component {
                           <td>{u.email}</td>
                           <td>{u.phoneNo || "N/A"}</td>
                           <td>{u.address || "N/A"}</td>
+                          <td onClick={() => this.deltetUser(u.id, u.email)}>
+                            <ion-icon
+                              className="pointer"
+                              name="close-outline"
+                              size="large"
+                              style={{ color: "red" }}
+                            ></ion-icon>
+                          </td>
                         </tr>
                       ))}
                   </tbody>

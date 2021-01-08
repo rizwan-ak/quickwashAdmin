@@ -57,6 +57,26 @@ class Header extends Component {
                     </Link>
                   </li>
                   <li className="nav-item">
+                    <Link to="/vouchers" className="nav-link h5">
+                      <span className="ml-2">Vouchers</span>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/deal" className="nav-link h5">
+                      <span className="ml-2">Deal</span>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/notifications" className="nav-link h5">
+                      <span className="ml-2">Send Notifications</span>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/drivers" className="nav-link h5">
+                      <span className="ml-2">Drivers</span>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
                     <Link to="/" className="nav-link h5">
                       <span className="ml-2">Logout</span>
                     </Link>

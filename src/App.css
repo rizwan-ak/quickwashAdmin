@@ -143,4 +143,5 @@ button:focus {
 td,
 th {
   width: 200px !important;
+  text-align: center !important;
 }

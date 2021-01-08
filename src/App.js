@@ -10,6 +10,10 @@ import Orders from "./pages/Orders";
 import Order from "./pages/Order";
 import Chat from "./pages/Chat";
 import Pricing from "./pages/Pricing";
+import Deal from "./pages/Deal";
+import Drivers from "./pages/Drivers";
+import Vouchers from "./pages/Vouchers";
+import Notifications from "./pages/Notifications";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
 
@@ -40,6 +44,10 @@ class App extends React.Component {
             <Route exact path="/user" component={User} />
             <Route exact path="/pricing" component={Pricing} />
             <Route exact path="/chat" component={Chat} />
+            <Route exact path="/deal" component={Deal} />
+            <Route exact path="/notifications" component={Notifications} />
+            <Route exact path="/vouchers" component={Vouchers} />
+            <Route exact path="/drivers" component={Drivers} />
           </Switch>
         </Router>
       </Provider>

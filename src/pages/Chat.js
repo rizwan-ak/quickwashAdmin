@@ -51,7 +51,7 @@ class Chat extends Component {
     console.log(this.state.user);
     return (
       <Header>
-        <Container>
+        <Container className="mt-5">
           <div className="px-4">
             {/* <!-- For demo purpose--> */}
 

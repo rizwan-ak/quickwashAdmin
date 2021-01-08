@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "../components/Header";
+import Chart from "../components/Chart";
 import { Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -11,12 +12,10 @@ class Dashboard extends Component {
   componentDidMount() {
     this.orders();
   }
+
   orders = async () => {
     await FB.getOrders((data) => this.props.getOrders(data));
-
-    const users = await FB.getUsers();
-    this.props.getUsers(users);
-
+    await FB.getUsers((users) => this.props.getUsers(users));
     await FB.getChats((chats) => this.props.getChats(chats));
     await FB.getPrices((prices) => this.props.getPrices(prices));
   };
@@ -29,6 +28,7 @@ class Dashboard extends Component {
               <h1 className="text-center">Dashboard</h1>
             </Card.Header>
             <Card.Body>
+              <Chart orders={this.props.orders} />
               <div className="m-5 d-flex flex-row justify-content-around">
                 <Link to="/orders">
                   <div className="p-5 border shadow rounded text-center secondaryBg">

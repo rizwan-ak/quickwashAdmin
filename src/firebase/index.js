@@ -1,4 +1,4 @@
-import * as firebase from "firebase";
+import * as firebase from "firebase"; 
 
 // Initialize Firebase
 export const firebaseConfig = {
@@ -17,6 +17,7 @@ const app = !firebase.apps.length
 
 const auth = app.auth();
 const firestore = app.firestore();
+const storageRef = firebase.storage().ref();
 
 //SIGNIN
 const signin = async (email, password) => {
@@ -24,7 +25,7 @@ const signin = async (email, password) => {
     const { user } = await auth.signInWithEmailAndPassword(email, password);
     return user.uid;
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -36,7 +37,7 @@ const isAdmin = async (id) => {
 
     return user.data();
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -45,7 +46,7 @@ const logout = async () => {
   try {
     return await auth.signOut();
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -53,9 +54,9 @@ const logout = async () => {
 const forgotPassword = async (email) => {
   try {
     await auth.sendPasswordResetEmail(email);
-    alert("Password Reset link is send to your email.");
+    console.log("Password Reset link is send to your email.");
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -66,7 +67,7 @@ const isLoggedIn = async (set) => {
       user && set(true);
     });
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -77,17 +78,20 @@ const getOrders = async (set) => {
       await set(res.docs.map((doc) => doc.data()));
     });
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
 //GET USERS
-const getUsers = async () => {
+const getUsers = async (set) => {
   try {
-    const data = await firestore.collection("users").get();
-    return await data.docs.map((doc) => doc.data());
+    const data = firestore.collection("users").onSnapshot(async (res) => {
+      const vas = res.docs.map((doc) => doc.data());
+      set(vas);
+    });
+    return data.docs.map((doc) => doc.data());
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -102,19 +106,19 @@ const getUser = async (id, set) => {
         set(vas[0]);
       });
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
 //GET CHATS
 const getChats = async (set) => {
   try {
-    await firestore.collection("chats").onSnapshot(async (res) => {
-      const chats = await res.docs.map((doc) => doc.data());
+    firestore.collection("chats").onSnapshot(async (res) => {
+      const chats = res.docs.map((doc) => doc.data());
       await set(chats);
     });
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -123,7 +127,7 @@ const changeOrderStatus = async (status, id) => {
   try {
     await firestore.doc(`orders/${id}`).set({ status }, { merge: true });
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -141,7 +145,7 @@ const sendMsg = async (id, msg) => {
 
     // await .set({ merge: true });
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -152,7 +156,7 @@ const setLocation = async (data) => {
       .doc(`ridersLocation/1`)
       .set({ lat: data.latitude, lon: data.longitude }, { merge: true });
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -161,7 +165,7 @@ const setPrices = async (data) => {
   try {
     await firestore.doc(`prices/1`).set({ ...data }, { merge: true });
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
@@ -172,7 +176,125 @@ const getPrices = async (set) => {
       await set(res.docs.map((doc) => doc.data())[0]);
     });
   } catch (err) {
-    alert(err);
+    console.log(err);
+  }
+};
+
+//DELTE USER
+const deleteUser = async (id) => {
+  try {
+    await firestore.doc(`users/${id}`).delete();
+    alert("Document successfully deleted!");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//SET DEAL
+const setDeal = async (data) => {
+  try {
+    await firestore.doc(`deal/1`).set({ ...data }, { merge: true });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//GET DEAL
+const getDeal = async (set) => {
+  try {
+    firestore.collection("deal").onSnapshot(async (res) => {
+      await set(res.docs.map((doc) => doc.data())[0].deal);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//SET VOUCHER
+const setVouchers = async (data) => {
+  try {
+    await firestore.doc(`vouchers/1`).set({ data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//GET VOUCHERS
+const getVouchers = async (set) => {
+  try {
+    firestore.collection("vouchers").onSnapshot(async (res) => {
+      await set(res.docs.map((doc) => doc.data())[0].data);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//SET DRIVERS
+const setDrivers = async (data, id) => {
+  console.log(data);
+  try {
+    await firestore.doc(`drivers/${id}`).set({ ...data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//SET DRIVERS PROFILE PICTURE
+const setDriversPic = async (file, id, set) => {
+  try {
+    var uploadTask = storageRef.child("drivers/" + id).put(file);
+    uploadTask.on(
+      firebase.storage.TaskEvent.STATE_CHANGED,
+      function (snapshot) {},
+      function (error) {},
+      function () {
+        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+          set(downloadURL);
+        });
+      }
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//DELTE DRIVER
+const deleteDriver = async (id) => {
+  try {
+    await firestore.doc(`drivers/${id}`).delete();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//GET DRIVERS
+const getDrivers = async (set) => {
+  try {
+    firestore.collection("drivers").onSnapshot(async (res) => {
+      await set(res.docs.map((doc) => doc.data()));
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//CHANGE DRIVERSRATINGS
+const changeDriversRatings = async (ratings, id) => {
+  try {
+    await firestore.doc(`drivers/${id}`).set({ ratings }, { merge: true });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//SEND NOTIFICATIONS
+const sendNotifications = async (data) => {
+  console.log(data);
+  try {
+    await firestore.doc(`notifications/1`).set({ ...data }, { merge: true });
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -191,4 +313,15 @@ export default {
   forgotPassword,
   setPrices,
   getPrices,
+  deleteUser,
+  setDeal,
+  getDeal,
+  setVouchers,
+  getVouchers,
+  setDrivers,
+  getDrivers,
+  deleteDriver,
+  setDriversPic,
+  changeDriversRatings,
+  sendNotifications,
 };
